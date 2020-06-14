@@ -51,7 +51,7 @@ Goal_length = len(straight_data)
 for count, i in enumerate(data_order):
     try:
         # load data
-        file_name = 'C:/Users/esaw2/work/Project/pygta5 data/data/training_data-{}.npy'.format(i)
+        file_name = 'E:/project pygta5 data backup/06-06 data/training_data-{}.npy'.format(i)
         # # full file info
         train = np.load(file_name)
 
@@ -116,29 +116,38 @@ reverse_left_data = reverse_left_data[:Slicing_number]
 reverse_right_data = reverse_right_data[:Slicing_number]
 nokeys_data = nokeys_data[:Slicing_number]
 
+print("직진:",len(straight_data))
+print("후진:",len(reverse_data))
+print("왼쪽:",len(left_data))
+print("오른쪽:",len(right_data))
+print("우회전:",len(forward_left_data))
+print("좌회전:",len(forward_right_data))
+print("좌후진:",len(reverse_left_data))
+print("우후진:",len(reverse_right_data))
+print("노키:",len(nokeys_data))
 
 
 
-final_data = straight_data + reverse_data + left_data + right_data + forward_left_data + forward_right_data + reverse_left_data + reverse_right_data + nokeys_data
-
-
-
-shuffle(final_data)
-
-
-
-
-
-
-starting_number = 1
-
-
-
-
+# final_data = straight_data + reverse_data + left_data + right_data + forward_left_data + forward_right_data + reverse_left_data + reverse_right_data + nokeys_data
+#
+#
+#
+# shuffle(final_data)
+#
+#
+#
+#
+#
+#
+# starting_number = 1
 
 
 
 
+
+
+
+"""
 while True:
     file_name = 'C:/Users/esaw2/work/Project/pygta5 data/balanced data/balanced training_data-{}.npy'.format(starting_number)
 
@@ -175,7 +184,7 @@ def main(file_name, starting_number):
 print("Balancing Finished!")
 
 main(file_name, starting_number)
-
+"""
 
 # while True:
 #     try:

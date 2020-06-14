@@ -16,29 +16,33 @@ np_load_old = np.load
 np.load = lambda *a, **k: np_load_old(*a, allow_pickle=True, **k)
 
 
-device = torch.device("cpu")
+device = torch.device("cuda")
 torch.cuda.manual_seed_all(777)
 device = 'cpu'
+batch_size = 1
 
 
-FILE_I_END = 7
+FILE_I_END = 10
 WIDTH = 480
 HEIGHT = 270
 
 model = models.ResNet(block = BasicBlock, layers = [2, 2, 2, 2]).to(device)  # (*args, **kwargs)
 #model = resnet.ResNet(block=resnet.Bottleneck, layers=[3, 4, 6, 3], num_classes=9).to(device)
 
-model.load_state_dict(torch.load("C:/Users/esaw2/work/Project/pygta5 data/balanced data/saved model/saved_model39-epoch_model.pt", map_location=device)
+model.load_state_dict(torch.load("C:/Users/esaw2/work/Project/pygta5 data/balanced data/saved model/saved_39-epoch_model.pt", map_location=device))
 
 
 
     # 데이터 순서 정하고 셔플
+
 data_order = [i for i in range(1, FILE_I_END + 1)]
 
 for count, i in enumerate(data_order):
     # try:
     # load data
-    file_name = 'C:/Users/esaw2/work/Project/pygta5 data/balanced data/test data/balanced training_data-{}.npy'.format(i)
+    # file_name = 'C:/Users/esaw2/work/Project/pygta5 data/balanced data/test data/balanced training_data-{}.npy'.format(i)
+    file_name = 'E:/project pygta5 data backup/data/training_data-{}.npy'.format(i)
+
     # # full file info
     test = np.load(file_name)
 

@@ -164,7 +164,11 @@ def no_keys():
 model = models.ResNet(block = BasicBlock, layers = [2, 2, 2, 2]).to(device)  # (*args, **kwargs)
 #model = resnet.ResNet(block=resnet.Bottleneck, layers=[3, 4, 6, 3], num_classes=9).to(device)
 
-model.load_state_dict(torch.load("C:/Users/esaw2/work/Project/pygta5 data/balanced data/saved model/saved_39-epoch_model.pt", map_location=device))
+model.load_state_dict(torch.load("C:/Users/esaw2/work/Project/pygta5 data/balanced data/saved model/saved_16-epoch_model.pt", map_location=device))
+# print('6/10 model')
+model.load_state_dict(torch.load("C:/Users/esaw2/work/Project/pygta5 data/balanced data/saved model/saved_model20-epoch_model.pt", map_location=device))
+print('6/6 model')
+
 model.to(device)
 
 model.eval()
@@ -227,6 +231,7 @@ def main():
             # prediction = model.predict([screen.reshape(WIDTH,HEIGHT,3)])[0]
             with torch.no_grad():
                 prediction = model(input_image)
+                # prediction = prediction * torch.Tensor([4, 0.2, 0.2, 0.2, 2, 2, 2, 0.5, 0.005]).to(device)
                 mode_choice = torch.argmax(prediction, 1)
                 # prediction = prediction * torch.Tensor([0.8, 0.9, 1, 1, 1, 1, 1, 1, 1])
                 # prediction_argmax = torch.argmax(prediction, -1)
