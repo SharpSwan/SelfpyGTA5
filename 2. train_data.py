@@ -13,7 +13,7 @@ import visdom
 vis = visdom.Visdom()
 vis.close(env="main")
 
-
+#set visdom plot validation function
 def show_validation(loss_plot, loss_value, num):
     '''num, loss_value, are Tensor'''
     vis.line(X=num,
@@ -29,13 +29,6 @@ np_load_old = np.load
 # modify the default parameters of np.load
 np.load = lambda *a, **k: np_load_old(*a, allow_pickle=True, **k)
 
-# device = 'cuda' if torch.cuda.is_available() else 'cpu'
-#
-# torch.manual_seed(777)
-# if device == 'cuda':
-#     torch.cuda.manual_seed_all(777)
-
-
 device = torch.device("cuda")
 torch.cuda.manual_seed_all(777)
 device = 'cuda'
@@ -47,7 +40,7 @@ FILE_I_END = 2160
 
 learning_rate = 0.001
 training_epochs = 40
-#epoch = 21
+epoch = 41
 
 MODEL_NAME = 'MY AWSOEM AI MODEL'
 PREV_MODEL = ''
@@ -56,13 +49,13 @@ LOAD_MODEL = True
 
 WIDTH = 480
 HEIGHT = 270
-batch_size = 100  # 여기서 정해준 배치사이즈는 data_loader 에서 돌아감
-#batch_size = 30
+batch_size = 100
 
 
 
 
-### 키 설정
+
+### set key label
 w = 0
 s = 1
 a = 2
@@ -72,36 +65,6 @@ wd = 5
 sa = 6
 sd = 7
 nk = 8
-
-# instantiate ResNet model
-
-
-#model = models.CNN_simple().to(device)
-
-
-
-# # load data
-# file_name = 'C:/Users/esaw2/work/Project/pygta5/Self_driving-GTA5-with-Pytorch/data/training_data-{}.npy'.format(i)
-# # # full file info
-# train = np.load(file_name)
-#
-# train_X = torch.FloatTensor(np.array([i[0] for i in train]).reshape(-1, 3, WIDTH, HEIGHT))
-# train_Y = torch.LongTensor([i[1] for i in train])
-#
-# train_X = train_X.to(device)
-# train_Y = train_Y.to(device)
-#
-# #print(train_X)
-# #print(train_X.shape)
-# #print(train_Y)
-# #print(train_Y.shape)
-#
-# train = TensorDataset(train_X, train_Y)
-#
-# data_loader = torch.utils.data.DataLoader(dataset=train,
-#                                           batch_size=batch_size,
-#                                           shuffle=True,
-#                                           drop_last=True)
 
 
 #make plot
@@ -119,8 +82,6 @@ criterion = torch.nn.CrossEntropyLoss().to(device)
 #criterion = torch.nn.CrossEntropyLoss().to(device)  # Softmax is internally computed.
 optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
-# train my model
-# model.train()  # set the model to train mode (dropout=True)
 
 
 
@@ -132,7 +93,6 @@ print('\b')
 Count_calculation = 0
 
 for epoch in range(training_epochs):
-
 
     avg_loss = 0.0
     avg_test_loss = 0.0
@@ -187,8 +147,6 @@ for epoch in range(training_epochs):
         total_test_length = len(test) * FILE_I_END
 
 
-
-
         for X, Y in train_set:
             # train my model. I think I'm trying to train with test so must to change train mode each epoch
             model.train()  # set the model to train mode (dropout=True)
@@ -219,11 +177,6 @@ for epoch in range(training_epochs):
             # print('Count_iteration:', Count_iteration)
 
         show_validation(training_loss_iteration, torch.Tensor([loss]), torch.Tensor([Count_calculation]))
-
-
-
-
-
 
 
         if (count + 1) % 10 == 0:
@@ -267,19 +220,13 @@ for epoch in range(training_epochs):
             show_validation(Accruacy_iteration, torch.Tensor([accuracy.item() * 100]), torch.Tensor([Count_calculation]))
             # print('val iteration:', iteration)
 
-        # vis.text('[file iteration loss: {:>.6}]'.format(loss), env="main")
-        # show_validation(training_loss_iteration, torch.Tensor([loss]), torch.Tensor([iteration]))
-        # print('loss iteration:', iteration)
-
-        # except Exception as e:
-        #     print(str(e))
 
     print('\b')
     print('[Epoch: {:>4}] avg loss = {:>.6} '.format(epoch + 1, avg_loss))
     print('[Epoch: {:>4}] acurracy: {:>.8} %'.format(epoch + 1, (100 * sum_accuracy / Count_iteration)))
     show_validation(training_loss_epoch, torch.Tensor([avg_loss]), torch.Tensor([epoch + 1]))
 
-    # Test loss와 Accuracy_epoch 그래프 문제가 있음. 로직 다시 볼 것 6/9
+    # Test loss와 Accuracy_epoch graph error. need check 6/9
     show_validation(Test_loss_epoch, torch.Tensor([avg_test_loss]), torch.Tensor([epoch+1]))
     show_validation(Accuracy_epoch, torch.Tensor([100 * sum_accuracy / Count_iteration]), torch.Tensor([epoch + 1]))
 
