@@ -194,10 +194,7 @@ for epoch in range(training_epochs):
             model.train()  # set the model to train mode (dropout=True)
 
             X, Y = Variable(X), Variable(Y)
-            #print(X)
-            #print(X.shape) # Torch.Size([100, 3, 480, 270])
-            #print(Y)
-            #print(Y.shape) # torch.Size([100])
+
             X = X.to(device)
             Y = Y.to(device)
 

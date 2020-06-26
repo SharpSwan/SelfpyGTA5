@@ -93,15 +93,6 @@ def main(file_name, starting_number):
             last_time = time.time()
             training_data.append([screen, output])
 
-
-            #Just to compare time with getting screen in Test_model. Not Essential
-            # print('loop took {:>.6} seconds.'.format((time.time() - last_time)))
-
-            # time.sleep(0.001)
-
-            # time.sleep(0.05) # 5/11  추가한 부분. 너무 연속적인 이미지는 비슷한 이미지가 많아 학습에 방해될 듯 싶어서.
-
-
             if len(training_data) % 100 == 0:
                 print(len(training_data))
 
@@ -129,5 +120,5 @@ def main(file_name, starting_number):
                 so_far_time = datetime.now() - start_time
                 print("so far took time:", so_far_time)
 
-
-main(file_name, starting_number)
+if __name__ == '__main__'
+    main(file_name, starting_number)
