@@ -120,5 +120,5 @@ def main(file_name, starting_number):
                 so_far_time = datetime.now() - start_time
                 print("so far took time:", so_far_time)
 
-if __name__ == '__main__'
+if __name__ == '__main__':
     main(file_name, starting_number)

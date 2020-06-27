@@ -130,7 +130,7 @@ def no_keys():
 model = models.ResNet(block = BasicBlock, layers = [2, 2, 2, 2]).to(device)
 
 
-model.load_state_dict(torch.load("C:/Users/esaw2/work/Project/pygta5 data/balanced data/saved model/saved_40-epoch_model.pt", map_location=device))
+model.load_state_dict(torch.load("C:/Users/esaw2/work/Project/pygta5 data/balanced data/saved model/saved_model21-epoch_model.pt", map_location=device))
 
 
 model.to(device)
