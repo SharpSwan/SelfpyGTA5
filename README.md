@@ -5,11 +5,11 @@ Self_driving GTA5 with Pytorch
 
 
 
-###Required data amount
+### Required data amount
 over 480,000 labled image
 at least over 50,000 labled image you can obtain encouraging results
 
-###Learning Model
+### Learning Model
 
 direct perception CNN -> Alex net
 
