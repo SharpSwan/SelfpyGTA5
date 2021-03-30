@@ -1,8 +1,8 @@
 # Self_driving-GTA5-with-Pytorch  
 
----
+![GTA5](https://github.com/SharpSwan/pygta5web/blob/master/gta5_self_driving.jpg)
 
-# Requirements  
+## Requirements  
 
 ---
 
@@ -20,20 +20,25 @@
 * LeFixspeedo
 * 
 ```
-### Dataset
+## Dataset
 
 ---
 1.collect_data.py 파일로 직접 운전을 하며 데이터를 모아야합니다.
+
+데이터는 [[이미지,명령]]의 넘파이로 기록되며 len = 500일때 npy파일로 저장됩니다.
+
 데이터 셋을 모을 때 주의할 점은 희소 데이터를 유의해서 모으는 것과, 고속도로 주행 데이터와 시내 운전 데이터를 밸런스 있게 모으는 것 입니다.
 
-일반적으로 운전시 
+일반적으로 운전하며 데이터를 모을시 w(straight)가 너무 많이 모이는 문제가 발생합니다.  
 
 
-### Learning Model  
+
+
+## Learning Model  
 
 ---
 
-direct perception CNN -> Alex net
+Resnet
 
 softmax->hyperbolic tangent
 
@@ -43,13 +48,17 @@ initial learning rate : 0.001
 
 MSE loss function
 
-21epochs,  approximately 900,000 images with batch size of 32
+training_epochs = 40
+
+batch_size = 100
 
 weather: sunlight
 
-maybe it will takes about for 40 hours.
+Shuffle = True
 
-car: FUTO
+Car: FUTO
+
+Using RTX 2080ti : it will takes more than 40 hours.
 
 ## References 
 
@@ -62,4 +71,4 @@ https://pythonprogramming.net/next-steps-python-plays-gta-v/
 
 ---
 
-![Lee sang woo](https://sharpswan.github.io/)
+[Lee sang woo](https://sharpswan.github.io/)
