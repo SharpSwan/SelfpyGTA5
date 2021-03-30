@@ -66,16 +66,14 @@ Using RTX 2080ti : it will takes more than 40 hours.
 
 ---
 
-> [1] H. Kinsley, “Python Plays GTA V,” Python Programming Tutorials
+> [1] H. Kinsley, “Python Plays GTA V,” Python Programming Tutorials  
 https://pythonprogramming.net/next-steps-python-plays-gta-v/
 
-> [2] Beyond Grand Theft Auto V for Training, Testing and Enhancing Deep Learning in Self Driving Cars 
+> [2] Beyond Grand Theft Auto V for Training, Testing and Enhancing Deep Learning in Self Driving Cars  
 https://arxiv.org/pdf/1712.01397.pdf
 
 ## Author
 
 ---
 
-[Lee sang woo](https://sharpswan.github.io/)
-
-https://sharpswan.github.io/pygta5web/index.html
+[Lee sang woo](https://sharpswan.github.io/) https://sharpswan.github.io/pygta5web/index.html
