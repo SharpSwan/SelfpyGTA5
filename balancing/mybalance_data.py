@@ -16,7 +16,7 @@ np.load = lambda *a, **k: np_load_old(*a, allow_pickle=True, **k)
 
 
 #Final data number = 477
-FILE_I_END = 477
+FILE_I_END = 831
 
 
 
@@ -51,7 +51,7 @@ Goal_length = len(straight_data)
 for count, i in enumerate(data_order):
     try:
         # load data
-        file_name = 'E:/project pygta5 data backup/06-06 data/training_data-{}.npy'.format(i)
+        file_name = 'E:/project pygta5 data backup/data/training_data-{}.npy'.format(i)
         # # full file info
         train = np.load(file_name)
 
@@ -92,19 +92,18 @@ for count, i in enumerate(data_order):
         print(str(e))
 
 
-reverse_data = reverse_data * 41
-left_data = left_data * 22
-right_data = right_data * 21
-forward_left_data = forward_left_data * 11
-forward_right_data = forward_right_data * 14
-reverse_left_data = reverse_left_data * 728
-reverse_right_data = reverse_right_data * 607
-nokeys_data = nokeys_data * 2
+reverse_data = reverse_data * 13
+left_data = left_data * 12
+right_data = right_data * 12
+forward_left_data = forward_left_data * 5
+forward_right_data = forward_right_data * 6
+reverse_left_data = reverse_left_data * 223
+reverse_right_data = reverse_right_data * 174
+nokeys_data = nokeys_data
 
 
 
-
-Slicing_number = 120000
+Slicing_number = 100000
 
 straight_data = straight_data[:Slicing_number]
 reverse_data = reverse_data[:Slicing_number]
@@ -128,26 +127,18 @@ print("노키:",len(nokeys_data))
 
 
 
-# final_data = straight_data + reverse_data + left_data + right_data + forward_left_data + forward_right_data + reverse_left_data + reverse_right_data + nokeys_data
-#
-#
-#
-# shuffle(final_data)
-#
-#
-#
-#
-#
-#
-# starting_number = 1
+final_data = straight_data + reverse_data + left_data + right_data + forward_left_data + forward_right_data + reverse_left_data + reverse_right_data + nokeys_data
 
 
 
+shuffle(final_data)
 
 
 
+starting_number = 1
 
-"""
+
+
 while True:
     file_name = 'C:/Users/esaw2/work/Project/pygta5 data/balanced data/balanced training_data-{}.npy'.format(starting_number)
 
@@ -183,8 +174,10 @@ def main(file_name, starting_number):
 
 print("Balancing Finished!")
 
-main(file_name, starting_number)
-"""
+if __name__ == '__main__':
+    main(file_name, starting_number)
+
+
 
 # while True:
 #     try:
@@ -223,13 +216,3 @@ main(file_name, starting_number)
 
 #기준이 될 length는 straight_data. 그 길이에 맞춰서 복사하고 append 하기.
 # if len(file) == len(straight_data): append 멈추기
-
-
-
-
-
-
-
-
-
-
