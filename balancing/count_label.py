@@ -83,7 +83,7 @@ nk = 8
 
 ###  Count specific label code  ###
 
-FILE_I_END = 477
+FILE_I_END = 831
 
 
     # 데이터 순서 정하고 셔플
@@ -99,24 +99,64 @@ reverse_left = 6
 reverse_right = 7
 nokeys = 8
 
-select = reverse_right
+select = straight
+# select = reverse
+# select = left
+# select = right
+# select = forward_left
+# select = forward_right
+# select = reverse_left
+# select = reverse_right
+# select = nokeys
+
+
+Count_straight : int = 0
+Count_reverse : int = 0
+Count_left : int = 0
+Count_right : int = 0
+Count_forward_left : int = 0
+Count_forward_right : int = 0
+Count_reverse_left : int = 0
+Count_reverse_right : int = 0
+Count_nokeys : int = 0
 
 Count_move_order: int = 0
 for count, i in enumerate(data_order):
     try:
         # load data
-        file_name = 'C:/Users/esaw2/work/Project/pygta5 data/data/training_data-{}.npy'.format(i)
+        file_name = 'E:/project pygta5 data backup/data/training_data-{}.npy'.format(i)
         # # full file info
         train = np.load(file_name)
 
         # train_X = np.array([i[0] for i in train]) X 데이터만 모으는것
         train_Y = ([i[1] for i in train])
+        Count_straight += train_Y.count(straight)
+        Count_reverse += train_Y.count(reverse)
+        Count_left += train_Y.count(left)
+        Count_right += train_Y.count(right)
+        Count_forward_left += train_Y.count(forward_left)
+        Count_forward_right += train_Y.count(forward_right)
+        Count_reverse_left += train_Y.count(reverse_left)
+        Count_reverse_right += train_Y.count(reverse_right)
+        Count_nokeys += train_Y.count(nokeys)
         # print(train_Y)
-        Count_move_order += train_Y.count(select)
-        print('{}-file contain'.format(i), select, ':', train_Y.count(select))
-        print('Count Order so far ', Count_move_order)
+        # Count_move_order += train_Y.count(select)
+        # print('{}-file contain'.format(i), select, ':', train_Y.count(select))
+        # print('Count Order so far ', Count_move_order)
     except Exception as e:
         print(str(e))
+
+    print('\b')
+    print('{} th file count:'.format(i))
+    print('Count_straight so far ', Count_straight)
+    print('Count_reverse so far ', Count_reverse)
+    print('Count_left so far ', Count_left)
+    print('Count_right so far ', Count_right)
+    print('Count_forward_left so far ', Count_forward_left)
+    print('Count_forward_right so far ', Count_forward_right)
+    print('Count_reverse_left so far ', Count_reverse_left)
+    print('Count_reverse_right so far ', Count_reverse_right)
+    print('Count_nokeys so far ', Count_nokeys)
 
 #6/6 이후 데이터
 """ count straight = 0
@@ -275,4 +315,20 @@ how to? 일단 for loop 코드를 만들어서 레이블끼리 따로 저장.
 그 후 필요한 레이블마다 자가복제.
 
 그 다음에 전체를 다 더해준 후 셔플 한 다음에, 특정 길이만큼 슬라이스하여 다시 넘파이로 저장
+"""
+
+"""
+7/1 데이터 숫자
+831 th file count:
+Count_straight so far  230039
+Count_reverse so far  8242    13
+Count_left so far  8620    12
+Count_right so far  8610   12
+Count_forward_left so far  21537   5
+Count_forward_right so far  18565  6
+Count_reverse_left so far  450    223
+Count_reverse_right so far  577   174
+Count_nokeys so far  118860
+
+
 """
