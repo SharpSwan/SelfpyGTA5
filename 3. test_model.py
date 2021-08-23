@@ -129,8 +129,8 @@ def no_keys():
 
 model = models.ResNet(block = BasicBlock, layers = [2, 2, 2, 2]).to(device)
 
-
-model.load_state_dict(torch.load("C:/Users/esaw2/work/Project/pygta5 data/balanced data/saved model/saved_model21-epoch_model.pt", map_location=device))
+checkpoint = (torch.load("C:/Users/esaw2/WorkSpace/Project/pygta5 data/balanced data/saved model/saved_40-epoch_model.pt", map_location=device))
+model.load_state_dict(checkpoint['model_state_dict'])
 
 
 model.to(device)
@@ -264,6 +264,9 @@ def main():
             if paused:
                 paused = False
                 time.sleep(1)
+                print("Restrart!!")
+                print("\b")
+                print("\b")
             else:
                 paused = True
                 ReleaseKey(s)
@@ -271,6 +274,11 @@ def main():
                 ReleaseKey(W)
                 ReleaseKey(D)
                 time.sleep(1)
+                print("\b")
+                print("\b")
+                print("Stop!!")
+                print("\b")
+                print("\b")
 
 if __name__ == "__main__":
     main()
